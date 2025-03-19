@@ -5,3 +5,6 @@ scikit-learn
 dill
 matplotlib
 seaborn
+catboost
+xgboost
+Flask

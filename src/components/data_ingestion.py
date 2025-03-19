@@ -12,8 +12,8 @@ from dataclasses import dataclass
 from src.components.data_tranformation import DataTranformationConfig
 from src.components.data_tranformation import DataTranformation
 
-#from src.components.model_trainer import ModelTrainerConfig
-#from src.components.model_trainer import ModelTrainer
+from src.components.model_trainer import ModelTrainerconfig
+from src.components.model_trainer import ModelTrainer
 
 @dataclass
 class DataIngestionConfig: #DataIngestionConfig class is responsible for storing the path of the train and test data file and raw data file.
@@ -64,5 +64,5 @@ if __name__ == "__main__":
         data_transformation = DataTranformation()
         train_arr, test_arr,_ = data_transformation.initiate_data_transformation(train_data, test_data)
 
-        #modeltrainer = ModelTrainer()
-        #print(modeltrainer.initiate_model_trainer(train_arr, test_arr))
+        modeltrainer = ModelTrainer()
+        print(modeltrainer.initiate_model_trainer(train_arr, test_arr))
