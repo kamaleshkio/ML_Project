@@ -45,47 +45,47 @@ class ModelTrainer:
                 "AdaBoost": AdaBoostRegressor(),
                 "GradientBoost": GradientBoostingRegressor(),
                 "XGBRegressor": XGBRegressor(),
-                "CatBoosting Redgressor": CatBoosRegressor( Verbose=False),
+                "CatBoost": CatBoostRegressor(verbose=False),
                 "LinearRegression": LinearRegression()
             }
 
             params = {
-                "Decision Tree": {
-                    'criterion' : ['squared_error', 'friedman_mse', 'absolute_error', 'poisson'],
+                "DecisionTree": {
+                    'criterion' : ['squared_error', 'friedman_mse', 'absolute_error', 'poisson']
                 },
 
-                "Random Forest": {
-                    'n_estimators': [10, 50, 100, 200, 300],
+                "RandomForest": {
+                    'n_estimators': [10, 50, 100, 200, 300]
                 },
 
-                "Gradient Boosting":{
+                "GradientBoost":{
                     'learning_rate': [.1,.01, 0.5, .001],
                     'subsample':[0.6, 0.7, 0.75, 0.8, 0.85, 0.9],
-                    'n_estimators': [8, 16, 32, 64, 128, 256],
+                    'n_estimators': [8, 16, 32, 64, 128, 256]
                 },
 
-                "Linear Regression": {},
+                "LinearRegression": {},
 
                 "AdaBoost": {
                     'n_estimators': [.1, .01, 0.5, .001],
                     'n_estimators': [8, 16, 32, 64, 128, 256]
                 },
 
-                "XGBRessor": {
+                "XGBRegressor": {
                     'learning_rate': [.1, .01, .05, .001],
-                    'n_estimators': [8, 16, 32, 64, 128, 256],
+                    'n_estimators': [8, 16, 32, 64, 128, 256]
                 }, 
 
                 "CatBoost":{
                     'depth': [6, 8, 10],
                     'learning_rate': [0.01, 0.05, 0.1],
-                    'iterations': [30, 50, 100],
-                },
+                    'iterations': [30, 50, 100]
+                }
                 
             }
 
 
-            model_report:dict = evaluate_models(X_train=X_train, y_train=y_train, X_test=X_test, y_test=y_test, models=models, params=params)
+            model_report:dict = evaluate_models(X_train=X_train, y_train=y_train, X_test=X_test, y_test=y_test, models=models,param=params)
 
             best_model_score = max(sorted(model_report.values())) # get the best model based on the score
 
@@ -107,8 +107,8 @@ class ModelTrainer:
 
             predicted=best_model.predict(X_test)
 
-            r2_score = r2_score(y_test, predicted)
-            return r2_score
+            r2_square = r2_score(y_test, predicted)
+            return r2_square
         
         except Exception as e:
             raise CustomException(e, sys)

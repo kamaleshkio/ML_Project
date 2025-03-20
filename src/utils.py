@@ -38,7 +38,7 @@ def evaluate_models(models, X_train, y_train, X_test, y_test, param):
             gs.fit(X_train, y_train)
 
             model.set_params(**gs.best_params_) # set the best parameters to the model 
-            model.ft(X_train, y_train)
+            model.fit(X_train, y_train)
 
             y_train_pred = model.predict(X_train)
             y_test_pred = model.predict(X_test)
