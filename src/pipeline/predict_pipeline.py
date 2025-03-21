@@ -1,4 +1,5 @@
 import sys
+import os
 import pandas as pd
 
 from src.exception import CustomException
@@ -21,12 +22,11 @@ class PredictPipeline:
             return preds
 
         except Exception as e:
-            raise CustomException(e)
+            raise CustomException(e, sys)
         
 
 class CustomData:
     def __init__(self, 
-                 
                 gender: str,
                 race_ethnicity: str,
                 parental_level_of_education,
